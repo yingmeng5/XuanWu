@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{2CB903A6-69F2-4A6D-B01F-67FA6DA5D9C6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XuanWu", "XuanWu\XuanWu.vcxproj", "{CC4D5BBD-DA4A-465F-A977-928CBA6E5587}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{872CDB47-632F-4440-82BC-F75733BF8913}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CB903A6-69F2-4A6D-B01F-67FA6DA5D9C6}.Debug|x64.ActiveCfg = Debug|x64
+		{2CB903A6-69F2-4A6D-B01F-67FA6DA5D9C6}.Debug|x64.Build.0 = Debug|x64
+		{2CB903A6-69F2-4A6D-B01F-67FA6DA5D9C6}.Release|x64.ActiveCfg = Release|x64
+		{2CB903A6-69F2-4A6D-B01F-67FA6DA5D9C6}.Release|x64.Build.0 = Release|x64
+		{CC4D5BBD-DA4A-465F-A977-928CBA6E5587}.Debug|x64.ActiveCfg = Debug|x64
+		{CC4D5BBD-DA4A-465F-A977-928CBA6E5587}.Debug|x64.Build.0 = Debug|x64
+		{CC4D5BBD-DA4A-465F-A977-928CBA6E5587}.Release|x64.ActiveCfg = Release|x64
+		{CC4D5BBD-DA4A-465F-A977-928CBA6E5587}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC4D5BBD-DA4A-465F-A977-928CBA6E5587} = {872CDB47-632F-4440-82BC-F75733BF8913}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68F17B3C-ED2A-4F9A-92BA-A99B993C7364}
+	EndGlobalSection
+EndGlobal
