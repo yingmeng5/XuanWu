@@ -4,6 +4,9 @@
     <Filter Include="XuanWu">
       <UniqueIdentifier>{6D3FA1DD-59E1-CBB3-429C-DF072EDD5204}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XuanWu\Events">
+      <UniqueIdentifier>{B1AE61B5-1D6F-DDEB-E6A9-2669522922C8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Header.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\XuanWu\EntryPoint.h">
       <Filter>XuanWu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Events\ApplicationEvent.h">
+      <Filter>XuanWu\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Events\Event.h">
+      <Filter>XuanWu\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Events\KeyEvent.h">
+      <Filter>XuanWu\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Events\MouseEvent.h">
+      <Filter>XuanWu\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\XuanWu\Log.h">
       <Filter>XuanWu</Filter>

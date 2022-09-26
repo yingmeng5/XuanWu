@@ -10,3 +10,5 @@
 #else
 	#error XuanWu only supports Windows!
 #endif // XW_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)
