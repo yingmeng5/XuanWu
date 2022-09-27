@@ -11,4 +11,12 @@
 	#error XuanWu only supports Windows!
 #endif // XW_PLATFORM_WINDOWS
 
+#ifdef XW_ENABLE_ASSERTS
+	#define XW_ASSERT(x, ...) { if(!(s)) { XW_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define XW_CORE_ASSERT(x, ...) { if(!(x)) { XW_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+	#define XW_ASSERT(x, ...)
+	#define XW_CORE_ASSERT(x, ...)
+#endif
+
 #define BIT(x) (1 << x)

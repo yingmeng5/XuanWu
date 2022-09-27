@@ -1,3 +1,4 @@
+#include "xwpch.h"
 #include "Log.h"
 
 namespace XuanWu {

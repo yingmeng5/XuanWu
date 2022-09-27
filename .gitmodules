@@ -1,0 +1,3 @@
+[submodule "XuanWu/vendor/GLFW"]
+	path = XuanWu/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

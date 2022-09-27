@@ -1,9 +1,6 @@
 #pragma once
-
+#include "xwpch.h"
 #include "XuanWu/Core.h"
-
-#include <string>
-#include <functional>
 
 
 namespace XuanWu {

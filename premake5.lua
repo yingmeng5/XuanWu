@@ -10,6 +10,11 @@ workspace "XuanWu"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "XuanWu/vendor/GLFW/include"
+
+include "XuanWu/vendor/GLFW"
+
 project "XuanWu"
 	location "XuanWu"
 	kind "SharedLib"
@@ -17,6 +22,9 @@ project "XuanWu"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "xwpch.h"
+	pchsource "XuanWu/src/xwpch.cpp"
 
 	files
 	{
@@ -27,7 +35,14 @@ project "XuanWu"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
