@@ -70,6 +70,7 @@ namespace XuanWu {
 		Event& m_Event;
 	};
 
+	// Log
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)
 	{
 		return os << e.ToString();
