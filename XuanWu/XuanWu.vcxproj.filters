@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Header.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\XuanWu.h" />
     <ClInclude Include="src\XuanWu\Application.h">
       <Filter>XuanWu</Filter>
     </ClInclude>
@@ -40,6 +40,12 @@
     <ClInclude Include="src\XuanWu\Events\MouseEvent.h">
       <Filter>XuanWu\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\XuanWu\Layer.h">
+      <Filter>XuanWu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\LayerStack.h">
+      <Filter>XuanWu</Filter>
+    </ClInclude>
     <ClInclude Include="src\XuanWu\Log.h">
       <Filter>XuanWu</Filter>
     </ClInclude>
@@ -53,6 +59,12 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\XuanWu\Application.cpp">
+      <Filter>XuanWu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Layer.cpp">
+      <Filter>XuanWu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\LayerStack.cpp">
       <Filter>XuanWu</Filter>
     </ClCompile>
     <ClCompile Include="src\XuanWu\Log.cpp">

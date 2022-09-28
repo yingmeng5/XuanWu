@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -107,6 +108,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -130,6 +132,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -144,8 +147,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Header.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\XuanWu.h" />
     <ClInclude Include="src\XuanWu\Application.h" />
     <ClInclude Include="src\XuanWu\Core.h" />
     <ClInclude Include="src\XuanWu\EntryPoint.h" />
@@ -153,6 +156,8 @@
     <ClInclude Include="src\XuanWu\Events\Event.h" />
     <ClInclude Include="src\XuanWu\Events\KeyEvent.h" />
     <ClInclude Include="src\XuanWu\Events\MouseEvent.h" />
+    <ClInclude Include="src\XuanWu\Layer.h" />
+    <ClInclude Include="src\XuanWu\LayerStack.h" />
     <ClInclude Include="src\XuanWu\Log.h" />
     <ClInclude Include="src\XuanWu\Window.h" />
     <ClInclude Include="src\xwpch.h" />
@@ -160,6 +165,8 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\XuanWu\Application.cpp" />
+    <ClCompile Include="src\XuanWu\Layer.cpp" />
+    <ClCompile Include="src\XuanWu\LayerStack.cpp" />
     <ClCompile Include="src\XuanWu\Log.cpp" />
     <ClCompile Include="src\xwpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

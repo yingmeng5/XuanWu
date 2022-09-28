@@ -63,14 +63,17 @@ project "XuanWu"
 	
 	filter "configurations:Debug"
 		defines "XW_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "XW_RELEASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "XW_DIST"
+		buildoptions "/MD"
 		symbols "On"
 
 
@@ -113,13 +116,15 @@ project "Sandbox"
 	
 	filter "configurations:Debug"
 		defines "XW_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "XW_RELEASE"
+		buildoptions "/MD"
 		symbols "On"
 
 	filter "configurations:Dist"
 		defines "XW_DIST"
-		symbols "On"
+		buildoptions "/MD"
 		symbols "On"
