@@ -12,8 +12,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "XuanWu/vendor/GLFW/include"
+IncludeDir["Glad"] = "XuanWu/vendor/Glad/include"
 
 include "XuanWu/vendor/GLFW"
+include "XuanWu/vendor/Glad"
 
 project "XuanWu"
 	location "XuanWu"
@@ -36,12 +38,14 @@ project "XuanWu"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -53,7 +57,8 @@ project "XuanWu"
 		defines
 		{
 			"XW_PLATFORM_WINDOWS",
-			"XW_BUILD_DLL"
+			"XW_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
