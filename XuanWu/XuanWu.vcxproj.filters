@@ -4,6 +4,9 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
@@ -13,8 +16,14 @@
     <Filter Include="XuanWu\Events">
       <UniqueIdentifier>{B1AE61B5-1D6F-DDEB-E6A9-2669522922C8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XuanWu\ImGui">
+      <UniqueIdentifier>{57D2E8A0-4335-7845-ECBA-B0FBD8FC43C8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRender.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -40,6 +49,9 @@
     <ClInclude Include="src\XuanWu\Events\MouseEvent.h">
       <Filter>XuanWu\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\XuanWu\ImGui\ImGuiLayer.h">
+      <Filter>XuanWu\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\XuanWu\Layer.h">
       <Filter>XuanWu</Filter>
     </ClInclude>
@@ -53,13 +65,20 @@
       <Filter>XuanWu</Filter>
     </ClInclude>
     <ClInclude Include="src\xwpch.h" />
+    <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRender.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\XuanWu\Application.cpp">
       <Filter>XuanWu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\ImGui\ImGuiLayer.cpp">
+      <Filter>XuanWu\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\XuanWu\Layer.cpp">
       <Filter>XuanWu</Filter>
