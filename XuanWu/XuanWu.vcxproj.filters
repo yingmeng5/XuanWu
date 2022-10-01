@@ -68,6 +68,11 @@
       <Filter>XuanWu</Filter>
     </ClInclude>
     <ClInclude Include="src\xwpch.h" />
+    <ClInclude Include="src\XuanWu\ImGui\ImGuiBuild.h" />
+    <ClInclude Include="src\XuanWu\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\XuanWu\KeyCode.h" />
+    <ClInclude Include="src\XuanWu\MouseButtonCode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRender.cpp">
@@ -92,5 +97,6 @@
       <Filter>XuanWu</Filter>
     </ClCompile>
     <ClCompile Include="src\xwpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

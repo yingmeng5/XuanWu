@@ -1,6 +1,7 @@
 workspace "XuanWu"
 	architecture "x64"
 	startproject "Sandbox"
+
 	configurations
 	{
 		"Debug",
@@ -15,10 +16,11 @@ IncludeDir["GLFW"] = "XuanWu/vendor/GLFW/include"
 IncludeDir["Glad"] = "XuanWu/vendor/Glad/include"
 IncludeDir["ImGui"] = "XuanWu/vendor/imgui"
 
-include "XuanWu/vendor/GLFW"
-include "XuanWu/vendor/Glad"
-include "XuanWu/vendor/imgui"
-
+group "Dependencies"
+	include "XuanWu/vendor/GLFW"
+	include "XuanWu/vendor/Glad"
+	include "XuanWu/vendor/imgui"
+group ""
 
 project "XuanWu"
 	location "XuanWu"
@@ -68,7 +70,7 @@ project "XuanWu"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 	
 	filter "configurations:Debug"

@@ -1,11 +1,13 @@
 #include "xwpch.h"
 #include "ImGuiLayer.h"
 
-//#include "imgui.h"
+#include "imgui.h"
+#include "ImGuiBuild.h"
 #include "Platform/OpenGL/ImGuiOpenGLRender.h"
 #include "GLFW/glfw3.h"
 #include "XuanWu/Application.h"
 #include <glad/glad.h>
+
 
 namespace XuanWu {
 
@@ -31,7 +33,10 @@ namespace XuanWu {
 		//io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
 		//io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
 
-		//ImGui_ImplGlfw_InitForOpenGL(, true);
+        Application& app = Application::Get();
+        GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
+
+		ImGui_ImplGlfw_InitForOpenGL(window, true);
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
 
@@ -47,12 +52,13 @@ namespace XuanWu {
 		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
 
 		ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
 		float time = static_cast<float>(glfwGetTime());
 		io.DeltaTime = m_Time > .0f ? (time - m_Time) : (1.0f / 60.0f);
 		m_Time = time;
-
+        
 
 		static bool show = true;
 		ImGui::ShowDemoWindow(&show);
