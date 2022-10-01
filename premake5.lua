@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "XuanWu/vendor/GLFW/include"
 IncludeDir["Glad"] = "XuanWu/vendor/Glad/include"
 IncludeDir["ImGui"] = "XuanWu/vendor/imgui"
+IncludeDir["glm"] = "XuanWu/vendor/glm"
 
 group "Dependencies"
 	include "XuanWu/vendor/GLFW"
@@ -46,7 +47,8 @@ project "XuanWu"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -108,7 +110,8 @@ project "Sandbox"
 	includedirs
 	{
 		"XuanWu/vendor/spdlog/include",
-		"XuanWu/src"
+		"XuanWu/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

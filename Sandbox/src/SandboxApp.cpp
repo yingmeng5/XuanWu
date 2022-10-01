@@ -1,5 +1,6 @@
 #include <XuanWu.h>
 
+#include <glm/glm.hpp>
 
 class ExampleLayer : public XuanWu::Layer
 {
