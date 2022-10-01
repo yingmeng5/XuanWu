@@ -1,6 +1,6 @@
 workspace "XuanWu"
 	architecture "x64"
-
+	startproject "Sandbox"
 	configurations
 	{
 		"Debug",
@@ -19,10 +19,12 @@ include "XuanWu/vendor/GLFW"
 include "XuanWu/vendor/Glad"
 include "XuanWu/vendor/imgui"
 
+
 project "XuanWu"
 	location "XuanWu"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,7 +57,6 @@ project "XuanWu"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -72,26 +73,26 @@ project "XuanWu"
 	
 	filter "configurations:Debug"
 		defines "XW_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "XW_RELEASE"
-		buildoptions "/MD"
-		symbols "On"
+		runtime "Release"
+		optimize "On"
 
 	filter "configurations:Dist"
 		defines "XW_DIST"
-		buildoptions "/MD"
-		symbols "On"
+		runtime "Release"
+		optimize "On"
 
 
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
-
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -115,7 +116,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -125,15 +125,15 @@ project "Sandbox"
 	
 	filter "configurations:Debug"
 		defines "XW_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "XW_RELEASE"
-		buildoptions "/MD"
-		symbols "On"
+		runtime "Release"
+		optimize "On"
 
 	filter "configurations:Dist"
 		defines "XW_DIST"
-		buildoptions "/MD"
-		symbols "On"
+		runtime "Release"
+		optimize "On"
