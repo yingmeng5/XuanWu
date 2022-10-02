@@ -152,8 +152,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRender.h" />
-    <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\XuanWu.h" />
@@ -164,7 +162,6 @@
     <ClInclude Include="src\XuanWu\Events\Event.h" />
     <ClInclude Include="src\XuanWu\Events\KeyEvent.h" />
     <ClInclude Include="src\XuanWu\Events\MouseEvent.h" />
-    <ClInclude Include="src\XuanWu\ImGui\ImGuiBuild.h" />
     <ClInclude Include="src\XuanWu\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\XuanWu\Input.h" />
     <ClInclude Include="src\XuanWu\KeyCode.h" />
@@ -176,10 +173,10 @@
     <ClInclude Include="src\xwpch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRender.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\XuanWu\Application.cpp" />
+    <ClCompile Include="src\XuanWu\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\XuanWu\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\XuanWu\Layer.cpp" />
     <ClCompile Include="src\XuanWu\LayerStack.cpp" />

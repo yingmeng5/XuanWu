@@ -7,6 +7,7 @@
 #include "Events/Event.h"
 #include "XuanWu/Events/ApplicationEvent.h"
 
+#include "XuanWu/ImGui/ImGuiLayer.h"
 
 namespace XuanWu {
 	class XUANWU_API Application
@@ -29,6 +30,7 @@ namespace XuanWu {
 		bool OnWindowClose(WindowCloseEvent& event);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
