@@ -65,6 +65,7 @@ project "XuanWu"
 
 		defines
 		{
+			"IMGUI_API=__declspec(dllexport)",
 			"XW_PLATFORM_WINDOWS",
 			"XW_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
@@ -111,6 +112,7 @@ project "Sandbox"
 	{
 		"XuanWu/vendor/spdlog/include",
 		"XuanWu/src",
+		"XuanWu/vendor",
 		"%{IncludeDir.glm}"
 	}
 
@@ -125,6 +127,7 @@ project "Sandbox"
 
 		defines
 		{
+			"IMGUI_API=__declspec(dllimport)",
 			"XW_PLATFORM_WINDOWS"
 		}
 	

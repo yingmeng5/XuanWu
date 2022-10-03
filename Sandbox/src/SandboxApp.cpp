@@ -1,6 +1,7 @@
 #include <XuanWu.h>
 
 #include <glm/glm.hpp>
+#include "imgui/imgui.h"
 
 class ExampleLayer : public XuanWu::Layer
 {
@@ -15,6 +16,13 @@ public:
 		//XW_INFO("ExampleLayer:Update");
 		if (XuanWu::Input::IsKeyPressed(XW_KEY_TAB))
 			XW_TRACE("Tab Key is pressed!");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World!");
+		ImGui::End();
 	}
 
 	void OnEvent(XuanWu::Event& event) override
@@ -38,7 +46,6 @@ public:
 
 	~Sandbox()
 	{
-
 	}
 };
 
