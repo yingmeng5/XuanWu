@@ -3,6 +3,7 @@
 #include "XuanWu/Window.h"
 
 #include <GLFW/glfw3.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace XuanWu {
 
@@ -28,6 +29,7 @@ namespace XuanWu {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

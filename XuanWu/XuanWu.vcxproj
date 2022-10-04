@@ -143,6 +143,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\XuanWu.h" />
@@ -160,10 +161,12 @@
     <ClInclude Include="src\XuanWu\LayerStack.h" />
     <ClInclude Include="src\XuanWu\Log.h" />
     <ClInclude Include="src\XuanWu\MouseButtonCode.h" />
+    <ClInclude Include="src\XuanWu\Render\GraphicsContext.h" />
     <ClInclude Include="src\XuanWu\Window.h" />
     <ClInclude Include="src\xwpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\XuanWu\Application.cpp" />
