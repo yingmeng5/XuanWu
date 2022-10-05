@@ -8,6 +8,8 @@
 #include "XuanWu/Events/ApplicationEvent.h"
 
 #include "XuanWu/ImGui/ImGuiLayer.h"
+#include "XuanWu/Render/Shader.h"
+#include "XuanWu/Render/Buffer.h"
 
 namespace XuanWu {
 	class XUANWU_API Application
@@ -23,7 +25,7 @@ namespace XuanWu {
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
-
+		
 		inline Window& GetWindow() { return *m_Window; }
 		inline static Application& Get() { return *s_Instance; }
 	private:
@@ -34,7 +36,10 @@ namespace XuanWu {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
+		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	private:
 		static Application* s_Instance;
 	};
