@@ -4,6 +4,9 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
@@ -16,8 +19,17 @@
     <Filter Include="XuanWu\ImGui">
       <UniqueIdentifier>{57D2E8A0-4335-7845-ECBA-B0FBD8FC43C8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XuanWu\Render">
+      <UniqueIdentifier>{3CE185D2-A8A1-0109-71DC-4A86DD5B46E5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -67,18 +79,30 @@
     <ClInclude Include="src\XuanWu\MouseButtonCode.h">
       <Filter>XuanWu</Filter>
     </ClInclude>
+    <ClInclude Include="src\XuanWu\Render\Buffer.h">
+      <Filter>XuanWu\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Render\GraphicsContext.h">
+      <Filter>XuanWu\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Render\Renderer.h">
+      <Filter>XuanWu\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Render\Shader.h">
+      <Filter>XuanWu\Render</Filter>
+    </ClInclude>
     <ClInclude Include="src\XuanWu\Window.h">
       <Filter>XuanWu</Filter>
     </ClInclude>
     <ClInclude Include="src\xwpch.h" />
-    <ClInclude Include="src\XuanWu\Render\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\XuanWu\Render\Shader.h" />
-    <ClInclude Include="src\XuanWu\Render\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\XuanWu\Render\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
@@ -103,11 +127,15 @@
     <ClCompile Include="src\XuanWu\Log.cpp">
       <Filter>XuanWu</Filter>
     </ClCompile>
+    <ClCompile Include="src\XuanWu\Render\Buffer.cpp">
+      <Filter>XuanWu\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Render\Renderer.cpp">
+      <Filter>XuanWu\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Render\Shader.cpp">
+      <Filter>XuanWu\Render</Filter>
+    </ClCompile>
     <ClCompile Include="src\xwpch.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\XuanWu\Render\Shader.cpp" />
-    <ClCompile Include="src\XuanWu\Render\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\XuanWu\Render\Renderer.cpp" />
   </ItemGroup>
 </Project>
