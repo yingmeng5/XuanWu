@@ -13,27 +13,6 @@ namespace XuanWu {
 
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-			case ShaderDataType::Float:			return GL_FLOAT;
-			case ShaderDataType::Float2:		return GL_FLOAT;
-			case ShaderDataType::Float3:		return GL_FLOAT;
-			case ShaderDataType::Float4:		return GL_FLOAT;
-			case ShaderDataType::Mat3:			return GL_FLOAT;
-			case ShaderDataType::Mat4:			return GL_FLOAT;
-			case ShaderDataType::Int:			return GL_INT;
-			case ShaderDataType::Int2:			return GL_INT;
-			case ShaderDataType::Int3:			return GL_INT;
-			case ShaderDataType::Int4:			return GL_INT;
-			case ShaderDataType::Bool:			return GL_BOOL;
-		}
-
-		XW_CORE_ASSERT(false, "Unknown ShaderDataType!");
-		return 0;
-	}
-
 	Application::Application()
 	{
 		XW_CORE_ASSERT(!s_Instance, "Application already exists!");
@@ -44,44 +23,47 @@ namespace XuanWu {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-		
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
 
+		m_VertexArray.reset(VertexArray::Create());
+		
 		float vertices[] = {
 			-0.5f, -0.5f, 0.0f, 1.0f, 0.f, 0.f, 1.0f,
 			 0.5f, -0.5f, 0.0f, 0.f, 1.0f, 0.f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.f, 0.f, 1.0f, 1.0f
+			 0.0f,  0.5f, 0.0f, 0.f, 0.5f, 1.0f, 1.0f
 		};
-
+		std::shared_ptr<VertexBuffer> m_VertexBuffer;
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-
-		{
-			BufferLayout layout = {
+		BufferLayout layout = {
 			{ ShaderDataType::Float3, "a_Position" },
 			{ ShaderDataType::Float4, "a_Color" }
-			};
+		};
 
-			m_VertexBuffer->SetLayout(layout);
-		}
-
-		uint32_t index = 0;
-		const auto& layout = m_VertexBuffer->GetLayout();
-		for (auto& element : layout)
-		{
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(index,
-				element.GetComponentCount(), 
-				ShaderDataTypeToOpenGLBaseType(element.Type), 
-				element.Normalized ? GL_TRUE : GL_FALSE, 
-				layout.GetStride(), 
-				(void*)element.Offset);
-			index++;
-		}
-
+		m_VertexBuffer->SetLayout(layout);
+		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
+		
 		uint32_t indices[3] = { 0, 1, 2 };
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices)/ sizeof(uint32_t)));
+		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
+
+		//ËÄ±ßÐÎ
+		m_SquareVAO.reset(VertexArray::Create());
+		float SquareVertex[] = {
+			-0.75f, -0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
+			 0.75f, -0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
+			 0.75f,  0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
+			-0.75f,  0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f
+		};
+		m_VertexBuffer.reset(VertexBuffer::Create(SquareVertex, sizeof(SquareVertex)));
+		m_VertexBuffer->SetLayout({
+			{ ShaderDataType::Float3, "a_Position" },
+			{ShaderDataType::Float4, "a_Color"} });
+		m_SquareVAO->AddVertexBuffer(m_VertexBuffer);
+
+		uint32_t SquareIndices[] = { 0, 1, 2, 2, 0, 3 };
+		m_IndexBuffer.reset(IndexBuffer::Create(SquareIndices, sizeof(SquareIndices) / sizeof(uint32_t)));
+		m_SquareVAO->SetIndexBuffer(m_IndexBuffer);
 
 		std::string vertexFile = R"(
 			#version 330 core
@@ -138,8 +120,13 @@ namespace XuanWu {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Shader->Bind();
-			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			m_SquareVAO->Bind();
+			glDrawElements(GL_TRIANGLES, m_SquareVAO->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+			m_VertexArray->Bind();
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
+			
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

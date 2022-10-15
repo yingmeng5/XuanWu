@@ -95,6 +95,8 @@
       <Filter>XuanWu</Filter>
     </ClInclude>
     <ClInclude Include="src\xwpch.h" />
+    <ClInclude Include="src\XuanWu\Render\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -137,5 +139,7 @@
       <Filter>XuanWu\Render</Filter>
     </ClCompile>
     <ClCompile Include="src\xwpch.cpp" />
+    <ClCompile Include="src\XuanWu\Render\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>

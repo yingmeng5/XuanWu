@@ -36,7 +36,7 @@ namespace XuanWu {
 		ShaderDataType Type;
 		bool Normalized;
 
-		//BufferElement() = default;
+		BufferElement() = default;
 
 		BufferElement(ShaderDataType type, const std::string& name, bool normalized = false)
 			:Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized)
@@ -75,6 +75,7 @@ namespace XuanWu {
 		{
 			CalculateOffsetAndStride();
 		}
+
 		inline uint32_t GetStride() const { return m_Stride; }
 		inline const std::vector<BufferElement>& GetElements() const { return m_Elements; }
 		std::vector<BufferElement>::iterator begin() { return m_Elements.begin(); }

@@ -5,7 +5,6 @@
 #include "XuanWu/Events/MouseEvent.h"
 #include "XuanWu/Events/ApplicationEvent.h"
 
-
 namespace XuanWu {
 
 	class XUANWU_API ImGuiLayer :public Layer
