@@ -10,8 +10,8 @@ namespace XuanWu {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: XW_CORE_ASSERT(false, "RendererAPI::None is currently not supported!") return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
+			case RendererAPI::API::None: XW_CORE_ASSERT(false, "RendererAPI::None is currently not supported!") return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
  		}
 
 		XW_CORE_ASSERT(false, "Unknow RendererAPI!");
@@ -22,8 +22,8 @@ namespace XuanWu {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: XW_CORE_ASSERT(false, "RendererAPI::None is currently not supported!") return nullptr;
-		case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, count);
+			case RendererAPI::API::None: XW_CORE_ASSERT(false, "RendererAPI::None is currently not supported!") return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, count);
 		}
 
 		XW_CORE_ASSERT(false, "Unknow RendererAPI!");

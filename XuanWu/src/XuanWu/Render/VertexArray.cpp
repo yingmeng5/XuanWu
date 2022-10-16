@@ -3,6 +3,7 @@
 
 #include "Renderer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
+#include "RendererAPI.h"
 
 namespace XuanWu {
 
@@ -10,8 +11,8 @@ namespace XuanWu {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: XW_CORE_ASSERT(false, "RendererAPI::None is currently not supported!") return nullptr;
-		case RendererAPI::OpenGL: return new OpenGLVertexArray();
+			case RendererAPI::API::None: XW_CORE_ASSERT(false, "RendererAPI::None is currently not supported!") return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLVertexArray();
 		}
 
 		XW_CORE_ASSERT(false, "Unknow RendererAPI!");
