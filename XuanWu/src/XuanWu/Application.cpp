@@ -15,6 +15,7 @@ namespace XuanWu {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		:m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		XW_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -71,11 +72,13 @@ namespace XuanWu {
 			layout(location = 0) in vec3 a_Pos;
 			layout(location = 1) in vec4 a_Color;
 
+			uniform mat4 u_ViewProjectionMatrix;
+
 			out vec4 t_Color;
 			void main()
 			{
 				t_Color = a_Color;
-				gl_Position = vec4(a_Pos, 1.0);
+				gl_Position = u_ViewProjectionMatrix * vec4(a_Pos, 1.0);
 			}
 		)";
 
@@ -120,12 +123,14 @@ namespace XuanWu {
 			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
+			//m_Camera.SetPosition({ 0.5, 0.5, 0.0f });
+			m_Camera.SetRotation(45.0f );
 
-			m_Shader->Bind();
-			Renderer::Submit(m_SquareVAO);
+			Renderer::BeginScene(m_Camera);
 
-			Renderer::Submit(m_VertexArray);
+			Renderer::Submit(m_Shader, m_SquareVAO);
+
+			Renderer::Submit(m_Shader, m_VertexArray);
 
 			Renderer::EndScene();
 

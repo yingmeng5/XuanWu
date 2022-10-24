@@ -106,6 +106,7 @@
     </ClInclude>
     <ClInclude Include="src\XuanWu\Render\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\XuanWu\Render\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -159,5 +160,6 @@
     </ClCompile>
     <ClCompile Include="src\XuanWu\Render\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\XuanWu\Render\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

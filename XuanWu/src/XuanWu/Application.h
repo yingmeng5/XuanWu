@@ -11,6 +11,7 @@
 #include "XuanWu/Render/Shader.h"
 #include "XuanWu/Render/Buffer.h"
 #include "XuanWu/Render/VertexArray.h"
+#include "XuanWu/Render/OrthographicCamera.h"
 
 namespace XuanWu {
 	class XUANWU_API Application
@@ -41,6 +42,8 @@ namespace XuanWu {
 		std::shared_ptr<VertexArray> m_VertexArray;
 
 		std::shared_ptr<VertexArray> m_SquareVAO;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
