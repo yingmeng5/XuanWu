@@ -144,6 +144,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\XuanWu\Camera\PerspectiveCamera.h" />
+    <ClInclude Include="src\XuanWu\Core\Platform.h" />
+    <ClInclude Include="src\XuanWu\Core\Timestep.h" />
     <ClInclude Include="src\XuanWu\Render\OrthographicCamera.h" />
     <ClInclude Include="src\XuanWu\Render\RenderCommand.h" />
     <ClInclude Include="src\XuanWu\Render\RendererAPI.h" />
@@ -177,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\XuanWu\Camera\PerspectiveCamera.cpp" />
     <ClCompile Include="src\XuanWu\Render\OrthographicCamera.cpp" />
     <ClCompile Include="src\XuanWu\Render\RenderCommand.cpp" />
     <ClCompile Include="src\XuanWu\Render\RendererAPI.cpp" />

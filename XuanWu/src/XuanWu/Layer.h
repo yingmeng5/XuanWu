@@ -2,6 +2,7 @@
 
 #include "XuanWu/Core.h"
 #include "XuanWu/Events/Event.h"
+#include "XuanWu/Core/Timestep.h"
 
 namespace XuanWu {
 
@@ -13,7 +14,7 @@ namespace XuanWu {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

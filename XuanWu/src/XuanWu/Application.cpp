@@ -3,10 +3,9 @@
 
 #include "XuanWu/Log.h"
 
-#include "XuanWu/Render/Renderer.h"
-
 #include "Input.h"
 #include "KeyCode.h"
+#include "XuanWu/Core/Platform.h"
 
 namespace XuanWu {
 
@@ -15,7 +14,6 @@ namespace XuanWu {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
-		:m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		XW_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -25,75 +23,6 @@ namespace XuanWu {
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-
-		m_VertexArray.reset(VertexArray::Create());
-		
-		float vertices[] = {
-			-0.5f, -0.5f, 0.0f, 1.0f, 0.f, 0.f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.f, 1.0f, 0.f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.f, 0.5f, 1.0f, 1.0f
-		};
-		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-
-		BufferLayout layout = {
-			{ ShaderDataType::Float3, "a_Position" },
-			{ ShaderDataType::Float4, "a_Color" }
-		};
-
-		m_VertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
-		
-		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
-
-		//ËÄ±ßÐÎ
-		m_SquareVAO.reset(VertexArray::Create());
-		float SquareVertex[] = {
-			-0.75f, -0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
-			 0.75f, -0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
-			 0.75f,  0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
-			-0.75f,  0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f
-		};
-		m_VertexBuffer.reset(VertexBuffer::Create(SquareVertex, sizeof(SquareVertex)));
-		m_VertexBuffer->SetLayout({
-			{ ShaderDataType::Float3, "a_Position" },
-			{ShaderDataType::Float4, "a_Color"} });
-		m_SquareVAO->AddVertexBuffer(m_VertexBuffer);
-
-		uint32_t SquareIndices[] = { 0, 1, 2, 2, 0, 3 };
-		m_IndexBuffer.reset(IndexBuffer::Create(SquareIndices, sizeof(SquareIndices) / sizeof(uint32_t)));
-		m_SquareVAO->SetIndexBuffer(m_IndexBuffer);
-
-		std::string vertexFile = R"(
-			#version 330 core
-			layout(location = 0) in vec3 a_Pos;
-			layout(location = 1) in vec4 a_Color;
-
-			uniform mat4 u_ViewProjectionMatrix;
-
-			out vec4 t_Color;
-			void main()
-			{
-				t_Color = a_Color;
-				gl_Position = u_ViewProjectionMatrix * vec4(a_Pos, 1.0);
-			}
-		)";
-
-		std::string FragmentFile = R"(
-			#version 330 core
-			layout(location = 0) out vec4 FragColor;
-
-			in vec4 t_Color;
-			void main()
-			{
-				FragColor = t_Color;
-			}
-		)";
-
-		m_Shader.reset(new Shader(vertexFile, FragmentFile));
 	}
 
 	Application::~Application()
@@ -106,7 +35,7 @@ namespace XuanWu {
 		dispatcher.Dispatch<WindowCloseEvent>(XW_BIND_EVENT_FN(Application::OnWindowClose));
 		if (XuanWu::Input::IsKeyPressed(XW_KEY_ESCAPE))
 			m_Running = false;
-		//XW_CORE_TRACE("{0}", e);
+
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
@@ -120,22 +49,12 @@ namespace XuanWu {
 	{	
 		while (m_Running)
 		{
-			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
-			RenderCommand::Clear();
-
-			//m_Camera.SetPosition({ 0.5, 0.5, 0.0f });
-			m_Camera.SetRotation(45.0f );
-
-			Renderer::BeginScene(m_Camera);
-
-			Renderer::Submit(m_Shader, m_SquareVAO);
-
-			Renderer::Submit(m_Shader, m_VertexArray);
-
-			Renderer::EndScene();
+			float currentTime = Platform::GetTime();
+			Timestep timestep = currentTime - m_LastFrameTime;
+			m_LastFrameTime = currentTime;
 
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

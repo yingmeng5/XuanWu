@@ -8,13 +8,12 @@
 #include "XuanWu/Events/ApplicationEvent.h"
 
 #include "XuanWu/ImGui/ImGuiLayer.h"
-#include "XuanWu/Render/Shader.h"
-#include "XuanWu/Render/Buffer.h"
-#include "XuanWu/Render/VertexArray.h"
-#include "XuanWu/Render/OrthographicCamera.h"
+#include "XuanWu/Core/Timestep.h"
+
 
 namespace XuanWu {
-	class XUANWU_API Application
+
+	class Application
 	{
 	public:
 		Application();
@@ -32,18 +31,13 @@ namespace XuanWu {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& event);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<VertexArray> m_SquareVAO;
-
-		OrthographicCamera m_Camera;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
