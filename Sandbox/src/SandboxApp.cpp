@@ -3,6 +3,9 @@
 #include <glm/glm.hpp>
 #include "imgui/imgui.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+
+
 class ExampleLayer : public XuanWu::Layer
 {
 public:
@@ -56,12 +59,13 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjectionMatrix;
+			uniform mat4 u_Model;
 
 			out vec4 t_Color;
 			void main()
 			{
 				t_Color = a_Color;
-				gl_Position = u_ViewProjectionMatrix * vec4(a_Pos, 1.0);
+				gl_Position = u_ViewProjectionMatrix * u_Model * vec4(a_Pos, 1.0);
 			}
 		)";
 
@@ -91,6 +95,7 @@ public:
 			m_CameraPosition.x -= m_CameraSpeed * ts;
 		else if (XuanWu::Input::IsKeyPressed(XW_KEY_D))
 			m_CameraPosition.x += m_CameraSpeed * ts;
+		
 
 		XuanWu::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		XuanWu::RenderCommand::Clear();
@@ -101,7 +106,6 @@ public:
 		XuanWu::Renderer::BeginScene(m_Camera);
 
 		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO);
-
 		XuanWu::Renderer::Submit(m_Shader, m_VertexArray);
 
 		XuanWu::Renderer::EndScene();
