@@ -10,7 +10,7 @@ class ExampleLayer : public XuanWu::Layer
 {
 public:
 	ExampleLayer()
-		:Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		:Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), camera(75.0f, (float)XuanWu::Application::Get().GetWindow().GetWidth() / (float)XuanWu::Application::Get().GetWindow().GetHeight(), 0.1f, 1000.0f)
 	{
 		m_VertexArray.reset(XuanWu::VertexArray::Create());
 
@@ -87,26 +87,28 @@ public:
 	{
 		XW_TRACE("Delta Time£º{0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
 
-		if (XuanWu::Input::IsKeyPressed(XW_KEY_W))
-			m_CameraPosition.y += m_CameraSpeed * ts;
-		else if (XuanWu::Input::IsKeyPressed(XW_KEY_S))
-			m_CameraPosition.y -= m_CameraSpeed * ts;
-		if (XuanWu::Input::IsKeyPressed(XW_KEY_A))
-			m_CameraPosition.x -= m_CameraSpeed * ts;
-		else if (XuanWu::Input::IsKeyPressed(XW_KEY_D))
-			m_CameraPosition.x += m_CameraSpeed * ts;
+		//if (XuanWu::Input::IsKeyPressed(XW_KEY_W))
+		//	m_CameraPosition.y += m_CameraSpeed * ts;
+		//else if (XuanWu::Input::IsKeyPressed(XW_KEY_S))
+		//	m_CameraPosition.y -= m_CameraSpeed * ts;
+		//if (XuanWu::Input::IsKeyPressed(XW_KEY_A))
+		//	m_CameraPosition.x -= m_CameraSpeed * ts;
+		//else if (XuanWu::Input::IsKeyPressed(XW_KEY_D))
+		//	m_CameraPosition.x += m_CameraSpeed * ts;
 		
+		camera.OnUpdate(ts);
 
 		XuanWu::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		XuanWu::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(0.0f );
+		//m_Camera.SetPosition(m_CameraPosition);
+		//m_Camera.SetRotation(0.0f );
 
-		XuanWu::Renderer::BeginScene(m_Camera);
+		XuanWu::Renderer::BeginScene(camera);
 
-		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO);
-		XuanWu::Renderer::Submit(m_Shader, m_VertexArray);
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
+		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO, transform);
+		XuanWu::Renderer::Submit(m_Shader, m_VertexArray, transform);
 
 		XuanWu::Renderer::EndScene();
 	}
@@ -118,7 +120,7 @@ public:
 
 	void OnEvent(XuanWu::Event& event) override
 	{
-
+		camera.OnEvent(event);
 	}
 private:
 	std::shared_ptr<XuanWu::Shader> m_Shader;
@@ -127,6 +129,7 @@ private:
 	std::shared_ptr<XuanWu::VertexArray> m_SquareVAO;
 
 	XuanWu::OrthographicCamera m_Camera;
+	XuanWu::PerspectiveCamera camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraSpeed = 5.0f;
 };

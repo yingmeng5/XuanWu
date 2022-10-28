@@ -21,6 +21,7 @@
 #include "XuanWu/Render/Buffer.h"
 #include "XuanWu/Render/VertexArray.h"
 #include "XuanWu/Render/OrthographicCamera.h"
+#include "XuanWu/Camera/PerspectiveCamera.h"
 // --------------------------------------------
 
 
