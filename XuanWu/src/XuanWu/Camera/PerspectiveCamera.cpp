@@ -8,7 +8,7 @@
 namespace XuanWu {
 
 	PerspectiveCamera::PerspectiveCamera(float field, float radio, float n, float f, glm::vec3& position, glm::vec3& up, float yaw, float pitch)
-		: Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(5.0f), MouseSensitivity(0.1f), Zoom(75.0f)
+		: Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(5.0f), MouseSensitivity(0.05f), Zoom(75.0f)
 	{
 		Radio = radio;
 		zNear = n;

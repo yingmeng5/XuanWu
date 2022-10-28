@@ -3,8 +3,8 @@
 #include <glm/glm.hpp>
 #include "imgui/imgui.h"
 
-#include <glm/gtc/matrix_transform.hpp>
-
+#include <glm/gtc/type_ptr.hpp>
+#include "Platform/OpenGL/OpenGLShader.h"
 
 class ExampleLayer : public XuanWu::Layer
 {
@@ -73,54 +73,60 @@ public:
 			#version 330 core
 			layout(location = 0) out vec4 FragColor;
 
+			uniform vec3 m_SquareColor;			
+
 			in vec4 t_Color;
 			void main()
 			{
-				FragColor = t_Color;
+				FragColor = vec4(m_SquareColor, 1.0);
 			}
 		)";
 
-		m_Shader.reset(new XuanWu::Shader(vertexFile, FragmentFile));
+		m_Shader.reset(XuanWu::Shader::Create(vertexFile, FragmentFile));
 	}
 
 	void OnUpdate(XuanWu::Timestep ts) override
 	{
 		XW_TRACE("Delta Time£º{0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
 
-		//if (XuanWu::Input::IsKeyPressed(XW_KEY_W))
-		//	m_CameraPosition.y += m_CameraSpeed * ts;
-		//else if (XuanWu::Input::IsKeyPressed(XW_KEY_S))
-		//	m_CameraPosition.y -= m_CameraSpeed * ts;
-		//if (XuanWu::Input::IsKeyPressed(XW_KEY_A))
-		//	m_CameraPosition.x -= m_CameraSpeed * ts;
-		//else if (XuanWu::Input::IsKeyPressed(XW_KEY_D))
-		//	m_CameraPosition.x += m_CameraSpeed * ts;
+		if (XuanWu::Input::IsKeyPressed(XW_KEY_W))
+			m_CameraPosition.y += m_CameraSpeed * ts;
+		else if (XuanWu::Input::IsKeyPressed(XW_KEY_S))
+			m_CameraPosition.y -= m_CameraSpeed * ts;
+		if (XuanWu::Input::IsKeyPressed(XW_KEY_A))
+			m_CameraPosition.x -= m_CameraSpeed * ts;
+		else if (XuanWu::Input::IsKeyPressed(XW_KEY_D))
+			m_CameraPosition.x += m_CameraSpeed * ts;
 		
-		camera.OnUpdate(ts);
+		//camera.OnUpdate(ts);
 
 		XuanWu::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		XuanWu::RenderCommand::Clear();
 
-		//m_Camera.SetPosition(m_CameraPosition);
-		//m_Camera.SetRotation(0.0f );
+		m_Camera.SetPosition(m_CameraPosition);
+		m_Camera.SetRotation(0.0f );
 
-		XuanWu::Renderer::BeginScene(camera);
+		XuanWu::Renderer::BeginScene(m_Camera);
 
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
-		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO, transform);
-		XuanWu::Renderer::Submit(m_Shader, m_VertexArray, transform);
+		m_Shader->Bind();
+		std::dynamic_pointer_cast<XuanWu::OpenGLShader>(m_Shader)->setVec3("m_SquareColor", m_SquareColor);
+
+		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO);
+		XuanWu::Renderer::Submit(m_Shader, m_VertexArray);
 
 		XuanWu::Renderer::EndScene();
 	}
 
 	virtual void OnImGuiRender() override
 	{
-		
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(XuanWu::Event& event) override
 	{
-		camera.OnEvent(event);
+		//camera.OnEvent(event);
 	}
 private:
 	std::shared_ptr<XuanWu::Shader> m_Shader;
@@ -132,6 +138,8 @@ private:
 	XuanWu::PerspectiveCamera camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraSpeed = 5.0f;
+
+	glm::vec3 m_SquareColor = { 0.1f, 0.5f, 0.2f };
 };
 
 class Sandbox : public XuanWu::Application

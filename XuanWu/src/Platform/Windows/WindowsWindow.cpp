@@ -49,7 +49,7 @@ namespace XuanWu {
 		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
-		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // 暂时的
+		//glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // 暂时的
 		SetVSync(true);
 
 		// Set GLFW callback
