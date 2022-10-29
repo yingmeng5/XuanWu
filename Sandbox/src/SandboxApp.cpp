@@ -19,7 +19,7 @@ public:
 			 0.5f, -0.5f, 0.0f, 0.f, 1.0f, 0.f, 1.0f,
 			 0.0f,  0.5f, 0.0f, 0.f, 0.5f, 1.0f, 1.0f
 		};
-		std::shared_ptr<XuanWu::VertexBuffer> m_VertexBuffer;
+		XuanWu::Ref<XuanWu::VertexBuffer> m_VertexBuffer;
 		m_VertexBuffer.reset(XuanWu::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		XuanWu::BufferLayout layout = {
@@ -31,7 +31,7 @@ public:
 		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<XuanWu::IndexBuffer> m_IndexBuffer;
+		XuanWu::Ref<XuanWu::IndexBuffer> m_IndexBuffer;
 		m_IndexBuffer.reset(XuanWu::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
@@ -129,10 +129,10 @@ public:
 		//camera.OnEvent(event);
 	}
 private:
-	std::shared_ptr<XuanWu::Shader> m_Shader;
-	std::shared_ptr<XuanWu::VertexArray> m_VertexArray;
+	XuanWu::Ref<XuanWu::Shader> m_Shader;
+	XuanWu::Ref<XuanWu::VertexArray> m_VertexArray;
 
-	std::shared_ptr<XuanWu::VertexArray> m_SquareVAO;
+	XuanWu::Ref<XuanWu::VertexArray> m_SquareVAO;
 
 	XuanWu::OrthographicCamera m_Camera;
 	XuanWu::PerspectiveCamera camera;
