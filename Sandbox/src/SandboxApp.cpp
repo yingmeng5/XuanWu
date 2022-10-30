@@ -38,15 +38,15 @@ public:
 		//ËÄ±ßÐÎ
 		m_SquareVAO.reset(XuanWu::VertexArray::Create());
 		float SquareVertex[] = {
-			-0.75f, -0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
-			 0.75f, -0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
-			 0.75f,  0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f,
-			-0.75f,  0.75f, .0f, .0f, 0.6f, 1.0f, 1.0f
+			-0.75f, -0.75f, .0f, 0.0f, 0.0f,
+			 0.75f, -0.75f, .0f, 1.0f, 0.0f, 
+			 0.75f,  0.75f, .0f, 1.0f, 1.0f,
+			-0.75f,  0.75f, .0f, 0.0f, 1.0f 		
 		};
 		m_VertexBuffer.reset(XuanWu::VertexBuffer::Create(SquareVertex, sizeof(SquareVertex)));
 		m_VertexBuffer->SetLayout({
 			{ XuanWu::ShaderDataType::Float3, "a_Position" },
-			{ XuanWu::ShaderDataType::Float4, "a_Color"} });
+			{ XuanWu::ShaderDataType::Float2, "a_Texture"} });
 		m_SquareVAO->AddVertexBuffer(m_VertexBuffer);
 
 		uint32_t SquareIndices[] = { 0, 1, 2, 2, 0, 3 };
@@ -56,15 +56,15 @@ public:
 		std::string vertexFile = R"(
 			#version 330 core
 			layout(location = 0) in vec3 a_Pos;
-			layout(location = 1) in vec4 a_Color;
+			layout(location = 1) in vec2 a_Texture;
 
 			uniform mat4 u_ViewProjectionMatrix;
 			uniform mat4 u_Model;
 
-			out vec4 t_Color;
+			out vec2 t_Texture;
 			void main()
 			{
-				t_Color = a_Color;
+				t_Texture = a_Texture;
 				gl_Position = u_ViewProjectionMatrix * u_Model * vec4(a_Pos, 1.0);
 			}
 		)";
@@ -73,16 +73,19 @@ public:
 			#version 330 core
 			layout(location = 0) out vec4 FragColor;
 
-			uniform vec3 m_SquareColor;			
+			uniform vec3 m_SquareColor;	
+			uniform sampler2D u_Texture;
 
-			in vec4 t_Color;
+			in vec2 t_Texture;		
+
 			void main()
 			{
-				FragColor = vec4(m_SquareColor, 1.0);
+				FragColor = texture(u_Texture, t_Texture);
 			}
 		)";
 
 		m_Shader.reset(XuanWu::Shader::Create(vertexFile, FragmentFile));
+		m_Texture = XuanWu::Texture2D::Create("assets/textures/Checkerboard.png");
 	}
 
 	void OnUpdate(XuanWu::Timestep ts) override
@@ -100,6 +103,8 @@ public:
 		
 		//camera.OnUpdate(ts);
 
+		m_Texture->Bind();
+
 		XuanWu::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		XuanWu::RenderCommand::Clear();
 
@@ -108,11 +113,18 @@ public:
 
 		XuanWu::Renderer::BeginScene(m_Camera);
 
+		//----------------------ÇøÓò--------------------------------------------------------
+
 		m_Shader->Bind();
-		std::dynamic_pointer_cast<XuanWu::OpenGLShader>(m_Shader)->setVec3("m_SquareColor", m_SquareColor);
+		std::dynamic_pointer_cast<XuanWu::OpenGLShader>(m_Shader)->setInt("u_Texture", 0);
 
 		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO);
-		XuanWu::Renderer::Submit(m_Shader, m_VertexArray);
+		
+		//Triangle
+		//XuanWu::Renderer::Submit(m_Shader, m_VertexArray);
+
+
+		//----------------------------------------------------------------------------------
 
 		XuanWu::Renderer::EndScene();
 	}
@@ -133,6 +145,8 @@ private:
 	XuanWu::Ref<XuanWu::VertexArray> m_VertexArray;
 
 	XuanWu::Ref<XuanWu::VertexArray> m_SquareVAO;
+
+	XuanWu::Ref<XuanWu::Texture2D> m_Texture;
 
 	XuanWu::OrthographicCamera m_Camera;
 	XuanWu::PerspectiveCamera camera;

@@ -19,6 +19,7 @@
 #include "XuanWu/Render/RenderCommand.h"
 #include "XuanWu/Render/Shader.h"
 #include "XuanWu/Render/Buffer.h"
+#include "XuanWu/Render/Texture.h"
 #include "XuanWu/Render/VertexArray.h"
 #include "XuanWu/Render/OrthographicCamera.h"
 #include "XuanWu/Camera/PerspectiveCamera.h"

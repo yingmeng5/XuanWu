@@ -18,6 +18,4 @@ namespace XuanWu {
 		XW_CORE_ASSERT(false, "Unknow RendererAPI!");
 		return nullptr;
 	}
-
-
 }

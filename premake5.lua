@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "XuanWu/vendor/GLFW/include"
 IncludeDir["Glad"] = "XuanWu/vendor/Glad/include"
 IncludeDir["ImGui"] = "XuanWu/vendor/imgui"
 IncludeDir["glm"] = "XuanWu/vendor/glm"
+IncludeDir["stb_image"] = "XuanWu/vendor/stb_image"
 
 group "Dependencies"
 	include "XuanWu/vendor/GLFW"
@@ -40,7 +41,11 @@ project "XuanWu"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	defines
@@ -55,7 +60,8 @@ project "XuanWu"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links
