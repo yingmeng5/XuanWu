@@ -86,6 +86,8 @@ public:
 
 		m_Shader.reset(XuanWu::Shader::Create(vertexFile, FragmentFile));
 		m_Texture = XuanWu::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_TextureLogo = XuanWu::Texture2D::Create("assets/textures/ChernoLogo.png");
+		std::dynamic_pointer_cast<XuanWu::OpenGLShader>(m_Shader)->setInt("u_Texture", 0);
 	}
 
 	void OnUpdate(XuanWu::Timestep ts) override
@@ -103,8 +105,6 @@ public:
 		
 		//camera.OnUpdate(ts);
 
-		m_Texture->Bind();
-
 		XuanWu::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		XuanWu::RenderCommand::Clear();
 
@@ -116,8 +116,11 @@ public:
 		//----------------------ÇøÓò--------------------------------------------------------
 
 		m_Shader->Bind();
-		std::dynamic_pointer_cast<XuanWu::OpenGLShader>(m_Shader)->setInt("u_Texture", 0);
+		
+		m_Texture->Bind();
+		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO);
 
+		m_TextureLogo->Bind();
 		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO);
 		
 		//Triangle
@@ -146,7 +149,7 @@ private:
 
 	XuanWu::Ref<XuanWu::VertexArray> m_SquareVAO;
 
-	XuanWu::Ref<XuanWu::Texture2D> m_Texture;
+	XuanWu::Ref<XuanWu::Texture2D> m_Texture, m_TextureLogo;
 
 	XuanWu::OrthographicCamera m_Camera;
 	XuanWu::PerspectiveCamera camera;

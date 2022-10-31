@@ -7,6 +7,8 @@
 #include "KeyCode.h"
 #include "XuanWu/Core/Platform.h"
 
+#include "XuanWu/Render/Renderer.h"
+
 namespace XuanWu {
 
 //#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -20,6 +22,8 @@ namespace XuanWu {
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(XW_BIND_EVENT_FN(Application::OnEvent));
+
+		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
