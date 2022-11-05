@@ -6,7 +6,38 @@
 
 namespace XuanWu {
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& vertexPath, const std::string& fragmentPath)
+	{
+		std::string vertexSrc = ReadFile(vertexPath);
+		std::string fragmentSrc = ReadFile(fragmentPath);
+		Compile(vertexSrc, fragmentSrc);
+	}
+
+	OpenGLShader::~OpenGLShader()
+	{
+		glDeleteProgram(m_RendererID);
+	}
+
+	std::string OpenGLShader::ReadFile(const std::string& filepath)
+	{
+		std::string result;
+		std::ifstream in(filepath, std::ios::in | std::ios::binary);
+		if (in)
+		{
+			in.seekg(0, std::ios::end);
+			result.resize(in.tellg());
+			in.seekg(0, std::ios::beg);
+			in.read(&result[0], result.size());
+			in.close();
+		}
+		else
+		{
+			XW_CORE_ERROR("Could not open file '{0}'", filepath);
+		}
+		return result;
+	}
+
+	void OpenGLShader::Compile(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
@@ -92,11 +123,6 @@ namespace XuanWu {
 		glDetachShader(m_RendererID, fragmentShader);
 	}
 
-	OpenGLShader::~OpenGLShader()
-	{
-		glDeleteProgram(m_RendererID);
-	}
-
 	void OpenGLShader::Bind() const
 	{
 		glUseProgram(m_RendererID);
@@ -131,7 +157,7 @@ namespace XuanWu {
 	{
 		glUniformMatrix3fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, GL_FALSE, &model[0][0]);
 	}
-
+	
 	void OpenGLShader::setVec3(const std::string& name, float x, float y, float z) const
 	{
 		glUniform3f(glGetUniformLocation(m_RendererID, name.c_str()), x, y, z);

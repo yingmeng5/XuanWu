@@ -9,7 +9,7 @@ namespace XuanWu {
 	class OpenGLShader : public Shader
 	{
 	public:
-		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& vertexPath, const std::string& fragmentPath);
 		virtual ~OpenGLShader();
 
 		virtual void Bind() const override;
@@ -23,6 +23,9 @@ namespace XuanWu {
 		void setVec3(const std::string& name, float x, float y, float z) const;
 		void setVec3(const std::string& name, const glm::vec3& value) const;
 		void setVec2(const std::string& name, const glm::vec2& value) const;
+	private:
+		std::string ReadFile(const std::string& filepath);
+		void Compile(const std::string& vertexSrc, const std::string& fragmentSrc);
 	private:
 		uint32_t m_RendererID;
 	};

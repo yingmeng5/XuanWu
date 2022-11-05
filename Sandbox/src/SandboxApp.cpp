@@ -53,38 +53,7 @@ public:
 		m_IndexBuffer.reset(XuanWu::IndexBuffer::Create(SquareIndices, sizeof(SquareIndices) / sizeof(uint32_t)));
 		m_SquareVAO->SetIndexBuffer(m_IndexBuffer);
 
-		std::string vertexFile = R"(
-			#version 330 core
-			layout(location = 0) in vec3 a_Pos;
-			layout(location = 1) in vec2 a_Texture;
-
-			uniform mat4 u_ViewProjectionMatrix;
-			uniform mat4 u_Model;
-
-			out vec2 t_Texture;
-			void main()
-			{
-				t_Texture = a_Texture;
-				gl_Position = u_ViewProjectionMatrix * u_Model * vec4(a_Pos, 1.0);
-			}
-		)";
-
-		std::string FragmentFile = R"(
-			#version 330 core
-			layout(location = 0) out vec4 FragColor;
-
-			uniform vec3 m_SquareColor;	
-			uniform sampler2D u_Texture;
-
-			in vec2 t_Texture;		
-
-			void main()
-			{
-				FragColor = texture(u_Texture, t_Texture);
-			}
-		)";
-
-		m_Shader.reset(XuanWu::Shader::Create(vertexFile, FragmentFile));
+		m_Shader.reset(XuanWu::Shader::Create("assets/shaders/Texture.vs", "assets/shaders/Texture.frag"));
 		m_Texture = XuanWu::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_TextureLogo = XuanWu::Texture2D::Create("assets/textures/ChernoLogo.png");
 		std::dynamic_pointer_cast<XuanWu::OpenGLShader>(m_Shader)->setInt("u_Texture", 0);
