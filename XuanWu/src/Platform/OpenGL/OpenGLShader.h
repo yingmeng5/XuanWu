@@ -9,11 +9,12 @@ namespace XuanWu {
 	class OpenGLShader : public Shader
 	{
 	public:
-		OpenGLShader(const std::string& vertexPath, const std::string& fragmentPath);
+		OpenGLShader(const std::string& name, const std::string& vertexPath, const std::string& fragmentPath);
 		virtual ~OpenGLShader();
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+		virtual const std::string& GetName() const override { return m_Name; }
 
 		void setBool(const std::string& name, bool value) const;
 		void setInt(const std::string& name, int value) const;
@@ -28,5 +29,6 @@ namespace XuanWu {
 		void Compile(const std::string& vertexSrc, const std::string& fragmentSrc);
 	private:
 		uint32_t m_RendererID;
+		std::string m_Name;
 	};
 }

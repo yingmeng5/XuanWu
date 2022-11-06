@@ -53,10 +53,12 @@ public:
 		m_IndexBuffer.reset(XuanWu::IndexBuffer::Create(SquareIndices, sizeof(SquareIndices) / sizeof(uint32_t)));
 		m_SquareVAO->SetIndexBuffer(m_IndexBuffer);
 
-		m_Shader.reset(XuanWu::Shader::Create("assets/shaders/Texture.vs", "assets/shaders/Texture.frag"));
+
+		//m_Shader = XuanWu::Shader::Create("Texture", "assets/shaders/Texture.vs", "assets/shaders/Texture.frag");
+		auto textureShader = m_ShaderLibrary.Load("Texture", "assets/shaders/Texture.vs", "assets/shaders/Texture.frag");
 		m_Texture = XuanWu::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_TextureLogo = XuanWu::Texture2D::Create("assets/textures/ChernoLogo.png");
-		std::dynamic_pointer_cast<XuanWu::OpenGLShader>(m_Shader)->setInt("u_Texture", 0);
+		std::dynamic_pointer_cast<XuanWu::OpenGLShader>(textureShader)->setInt("u_Texture", 0);
 	}
 
 	void OnUpdate(XuanWu::Timestep ts) override
@@ -84,13 +86,16 @@ public:
 
 		//----------------------ÇøÓò--------------------------------------------------------
 
-		m_Shader->Bind();
-		
+		//m_Shader->Bind();
+
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+		textureShader->Bind();
+
 		m_Texture->Bind();
-		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO);
+		XuanWu::Renderer::Submit(textureShader, m_SquareVAO);
 
 		m_TextureLogo->Bind();
-		XuanWu::Renderer::Submit(m_Shader, m_SquareVAO);
+		XuanWu::Renderer::Submit(textureShader, m_SquareVAO);
 		
 		//Triangle
 		//XuanWu::Renderer::Submit(m_Shader, m_VertexArray);
@@ -113,6 +118,7 @@ public:
 		//camera.OnEvent(event);
 	}
 private:
+	XuanWu::ShaderLibrary m_ShaderLibrary;
 	XuanWu::Ref<XuanWu::Shader> m_Shader;
 	XuanWu::Ref<XuanWu::VertexArray> m_VertexArray;
 

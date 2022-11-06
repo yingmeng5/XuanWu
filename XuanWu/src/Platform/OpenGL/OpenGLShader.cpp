@@ -6,7 +6,8 @@
 
 namespace XuanWu {
 
-	OpenGLShader::OpenGLShader(const std::string& vertexPath, const std::string& fragmentPath)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexPath, const std::string& fragmentPath)
+		:m_Name(name)
 	{
 		std::string vertexSrc = ReadFile(vertexPath);
 		std::string fragmentSrc = ReadFile(fragmentPath);
