@@ -169,6 +169,7 @@
     <ClInclude Include="src\XuanWu\LayerStack.h" />
     <ClInclude Include="src\XuanWu\Log.h" />
     <ClInclude Include="src\XuanWu\MouseButtonCode.h" />
+    <ClInclude Include="src\XuanWu\OrthographicCameraController.h" />
     <ClInclude Include="src\XuanWu\Render\Buffer.h" />
     <ClInclude Include="src\XuanWu\Render\GraphicsContext.h" />
     <ClInclude Include="src\XuanWu\Render\OrthographicCamera.h" />
@@ -606,6 +607,7 @@
     <ClCompile Include="src\XuanWu\Layer.cpp" />
     <ClCompile Include="src\XuanWu\LayerStack.cpp" />
     <ClCompile Include="src\XuanWu\Log.cpp" />
+    <ClCompile Include="src\XuanWu\OrthographicCameraController.cpp" />
     <ClCompile Include="src\XuanWu\Render\Buffer.cpp" />
     <ClCompile Include="src\XuanWu\Render\OrthographicCamera.cpp" />
     <ClCompile Include="src\XuanWu\Render\RenderCommand.cpp" />
