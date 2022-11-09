@@ -154,6 +154,7 @@
     <ClInclude Include="src\XuanWu.h" />
     <ClInclude Include="src\XuanWu\Application.h" />
     <ClInclude Include="src\XuanWu\Camera\PerspectiveCamera.h" />
+    <ClInclude Include="src\XuanWu\Camera\PerspectiveCameraController.h" />
     <ClInclude Include="src\XuanWu\Core.h" />
     <ClInclude Include="src\XuanWu\Core\Platform.h" />
     <ClInclude Include="src\XuanWu\Core\Timestep.h" />
@@ -602,6 +603,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\XuanWu\Application.cpp" />
     <ClCompile Include="src\XuanWu\Camera\PerspectiveCamera.cpp" />
+    <ClCompile Include="src\XuanWu\Camera\PerspectiveCameraController.cpp" />
     <ClCompile Include="src\XuanWu\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\XuanWu\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\XuanWu\Layer.cpp" />

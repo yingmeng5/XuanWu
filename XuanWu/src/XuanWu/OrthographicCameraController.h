@@ -28,7 +28,7 @@ namespace XuanWu {
 		bool m_Rotation;
 
 		glm::vec3 m_CameraPosition = { 0.f, 0.f, 0.f };
-		float m_CameraTranslationSpeed = 2.0f, m_CameraRotationSpeed = 20.0f;
+		float m_CameraTranslationSpeed = 5.0f, m_CameraRotationSpeed = 20.0f;
 		float m_CameraRotation = 0.0f;
 
 		OrthographicCamera m_Camera;

@@ -3,6 +3,7 @@
 #include "XuanWu/Window.h"
 
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 #include "Platform/OpenGL/OpenGLContext.h"
 
 namespace XuanWu {

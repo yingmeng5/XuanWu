@@ -1396,6 +1396,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\XuanWu\OrthographicCameraController.h" />
+    <ClInclude Include="src\XuanWu\Camera\PerspectiveCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1474,5 +1475,6 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\XuanWu\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\XuanWu\Camera\PerspectiveCameraController.cpp" />
   </ItemGroup>
 </Project>

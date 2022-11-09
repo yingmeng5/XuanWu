@@ -37,9 +37,9 @@ namespace XuanWu {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(XW_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(XW_BIND_EVENT_FN(Application::OnWindowResize));
 		if (XuanWu::Input::IsKeyPressed(XW_KEY_ESCAPE))
 			m_Running = false;
-
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
@@ -48,7 +48,7 @@ namespace XuanWu {
 				break;
 		}
 	}
-		
+
 	void Application::Run()
 	{	
 		while (m_Running)
@@ -57,8 +57,11 @@ namespace XuanWu {
 			Timestep timestep = currentTime - m_LastFrameTime;
 			m_LastFrameTime = currentTime;
 
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate(timestep);
+			if (!m_Minimized)
+			{
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(timestep);
+			}
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
@@ -85,5 +88,19 @@ namespace XuanWu {
 	{
 		m_Running = false;
 		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& event)
+	{
+		if (event.GetWidth() == 0 || event.GetHeight() == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+
+		m_Minimized = false;
+		Renderer::OnWindowResize(event.GetWidth(), event.GetHeight());
+
+		return false;
 	}
 }

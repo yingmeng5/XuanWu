@@ -63,7 +63,7 @@ public:
 
 	void OnUpdate(XuanWu::Timestep ts) override
 	{
-		XW_TRACE("Delta Time£º{0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
+		//XW_TRACE("Delta Time£º{0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
 		
 		//camera.OnUpdate(ts);
 		m_CameraController.OnUpdate(ts);
