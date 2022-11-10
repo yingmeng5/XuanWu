@@ -1,6 +1,6 @@
 #include "xwpch.h"
 #include "WindowsInput.h"
-#include "XuanWu/Application.h"
+#include "XuanWu/Core/Application.h"
 
 #include <GLFW/glfw3.h>
 

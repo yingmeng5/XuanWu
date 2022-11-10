@@ -1,8 +1,8 @@
 #include "xwpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Input.h"
-#include "KeyCode.h"
+#include "XuanWu/Core/Input.h"
+#include "XuanWu/Core/KeyCode.h"
 
 namespace XuanWu {
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)

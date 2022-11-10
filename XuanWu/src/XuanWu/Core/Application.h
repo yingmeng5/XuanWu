@@ -3,8 +3,8 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "XuanWu/LayerStack.h"
-#include "Events/Event.h"
+#include "LayerStack.h"
+#include "XuanWu/Events/Event.h"
 #include "XuanWu/Events/ApplicationEvent.h"
 
 #include "XuanWu/ImGui/ImGuiLayer.h"

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Render/OrthographicCamera.h"
-#include "Core/Timestep.h"
+#include "OrthographicCamera.h"
+#include "XuanWu/Core/Timestep.h"
 
-#include "Events/MouseEvent.h"
-#include "Events/ApplicationEvent.h"
+#include "XuanWu/Events/MouseEvent.h"
+#include "XuanWu/Events/ApplicationEvent.h"
 
 namespace XuanWu {
 

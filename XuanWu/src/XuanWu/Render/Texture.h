@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "XuanWu/Core.h"
+#include "XuanWu/Core/Core.h"
 
 namespace XuanWu {
 	

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "XuanWu/Core.h"
+#include "XuanWu/Core/Core.h"
 #include "XuanWu/Events/Event.h"
 #include "XuanWu/Core/Timestep.h"
 

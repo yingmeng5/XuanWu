@@ -2,7 +2,7 @@
 
 #include "xwpch.h"
 
-#include "XuanWu/Core.h"
+#include "XuanWu/Core/Core.h"
 #include "XuanWu/Events/Event.h"
 
 namespace XuanWu {

@@ -1,8 +1,8 @@
 #include "xwpch.h"
 #include "PerspectiveCamera.h"
 #include <glm/gtc/matrix_transform.hpp>
-#include "XuanWu/Input.h"
-#include "XuanWu/KeyCode.h"
+#include "XuanWu/Core/Input.h"
+#include "XuanWu/Core/KeyCode.h"
 
 
 namespace XuanWu {

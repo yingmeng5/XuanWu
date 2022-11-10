@@ -2,18 +2,18 @@
 
 // For use by XuanWu application
 
-#include "XuanWu/Application.h"
-#include "XuanWu/Layer.h"
-#include "XuanWu/Log.h"
+#include "XuanWu/Core/Application.h"
+#include "XuanWu/Core/Layer.h"
+#include "XuanWu/Core/Log.h"
 #include "XuanWu/ImGui/ImGuiLayer.h"
 
 #include "XuanWu/Core/Timestep.h"
 
-#include "XuanWu/OrthographicCameraController.h"
+#include "XuanWu/Render/OrthographicCameraController.h"
 
-#include "XuanWu/KeyCode.h"
-#include "XuanWu/MouseButtonCode.h"
-#include "XuanWu/Input.h"
+#include "XuanWu/Core/KeyCode.h"
+#include "XuanWu/Core/MouseButtonCode.h"
+#include "XuanWu/Core/Input.h"
 
 
 //-------------Render---------------------------
@@ -28,5 +28,5 @@
 
 
 // ---------------Entry Point------------------
-#include "XuanWu/EntryPoint.h"
+#include "XuanWu/Core/EntryPoint.h"
 // --------------------------------------------

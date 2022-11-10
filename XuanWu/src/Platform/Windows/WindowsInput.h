@@ -1,5 +1,5 @@
 #pragma once
-#include "XuanWu/Input.h"
+#include "XuanWu/Core/Input.h"
 
 
 namespace XuanWu {

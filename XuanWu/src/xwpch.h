@@ -13,7 +13,7 @@
 #include <unordered_set>
 #include <fstream>
 
-#include "XuanWu/Log.h"
+#include "XuanWu/Core/Log.h"
 
 #ifdef XW_PLATFORM_WINDOWS
 	#include <Windows.h>

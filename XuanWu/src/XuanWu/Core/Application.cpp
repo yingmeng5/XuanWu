@@ -1,7 +1,7 @@
 #include "xwpch.h"
 #include "Application.h"
 
-#include "XuanWu/Log.h"
+#include "XuanWu/Core/Log.h"
 
 #include "Input.h"
 #include "KeyCode.h"

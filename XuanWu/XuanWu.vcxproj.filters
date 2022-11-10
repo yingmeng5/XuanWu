@@ -84,14 +84,38 @@
     <ClInclude Include="src\XuanWu.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\XuanWu\Application.h">
-      <Filter>src\XuanWu</Filter>
-    </ClInclude>
     <ClInclude Include="src\XuanWu\Camera\PerspectiveCamera.h">
       <Filter>src\XuanWu\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="src\XuanWu\Core.h">
-      <Filter>src\XuanWu</Filter>
+    <ClInclude Include="src\XuanWu\Camera\PerspectiveCameraController.h">
+      <Filter>src\XuanWu\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\Application.h">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\Core.h">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\EntryPoint.h">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\Input.h">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\KeyCode.h">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\Layer.h">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\LayerStack.h">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\Log.h">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Core\MouseButtonCode.h">
+      <Filter>src\XuanWu\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\XuanWu\Core\Platform.h">
       <Filter>src\XuanWu\Core</Filter>
@@ -99,8 +123,8 @@
     <ClInclude Include="src\XuanWu\Core\Timestep.h">
       <Filter>src\XuanWu\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\XuanWu\EntryPoint.h">
-      <Filter>src\XuanWu</Filter>
+    <ClInclude Include="src\XuanWu\Core\Window.h">
+      <Filter>src\XuanWu\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\XuanWu\Events\ApplicationEvent.h">
       <Filter>src\XuanWu\Events</Filter>
@@ -117,24 +141,6 @@
     <ClInclude Include="src\XuanWu\ImGui\ImGuiLayer.h">
       <Filter>src\XuanWu\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\XuanWu\Input.h">
-      <Filter>src\XuanWu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XuanWu\KeyCode.h">
-      <Filter>src\XuanWu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XuanWu\Layer.h">
-      <Filter>src\XuanWu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XuanWu\LayerStack.h">
-      <Filter>src\XuanWu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XuanWu\Log.h">
-      <Filter>src\XuanWu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XuanWu\MouseButtonCode.h">
-      <Filter>src\XuanWu</Filter>
-    </ClInclude>
     <ClInclude Include="src\XuanWu\Render\Buffer.h">
       <Filter>src\XuanWu\Render</Filter>
     </ClInclude>
@@ -142,6 +148,9 @@
       <Filter>src\XuanWu\Render</Filter>
     </ClInclude>
     <ClInclude Include="src\XuanWu\Render\OrthographicCamera.h">
+      <Filter>src\XuanWu\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XuanWu\Render\OrthographicCameraController.h">
       <Filter>src\XuanWu\Render</Filter>
     </ClInclude>
     <ClInclude Include="src\XuanWu\Render\RenderCommand.h">
@@ -161,9 +170,6 @@
     </ClInclude>
     <ClInclude Include="src\XuanWu\Render\VertexArray.h">
       <Filter>src\XuanWu\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XuanWu\Window.h">
-      <Filter>src\XuanWu</Filter>
     </ClInclude>
     <ClInclude Include="src\xwpch.h">
       <Filter>src</Filter>
@@ -1395,8 +1401,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\XuanWu\OrthographicCameraController.h" />
-    <ClInclude Include="src\XuanWu\Camera\PerspectiveCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1423,11 +1427,23 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\XuanWu\Application.cpp">
-      <Filter>src\XuanWu</Filter>
-    </ClCompile>
     <ClCompile Include="src\XuanWu\Camera\PerspectiveCamera.cpp">
       <Filter>src\XuanWu\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Camera\PerspectiveCameraController.cpp">
+      <Filter>src\XuanWu\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Core\Application.cpp">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Core\Layer.cpp">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Core\LayerStack.cpp">
+      <Filter>src\XuanWu\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Core\Log.cpp">
+      <Filter>src\XuanWu\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\XuanWu\ImGui\ImGuiBuild.cpp">
       <Filter>src\XuanWu\ImGui</Filter>
@@ -1435,19 +1451,13 @@
     <ClCompile Include="src\XuanWu\ImGui\ImGuiLayer.cpp">
       <Filter>src\XuanWu\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\XuanWu\Layer.cpp">
-      <Filter>src\XuanWu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XuanWu\LayerStack.cpp">
-      <Filter>src\XuanWu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XuanWu\Log.cpp">
-      <Filter>src\XuanWu</Filter>
-    </ClCompile>
     <ClCompile Include="src\XuanWu\Render\Buffer.cpp">
       <Filter>src\XuanWu\Render</Filter>
     </ClCompile>
     <ClCompile Include="src\XuanWu\Render\OrthographicCamera.cpp">
+      <Filter>src\XuanWu\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XuanWu\Render\OrthographicCameraController.cpp">
       <Filter>src\XuanWu\Render</Filter>
     </ClCompile>
     <ClCompile Include="src\XuanWu\Render\RenderCommand.cpp">
@@ -1474,7 +1484,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\XuanWu\OrthographicCameraController.cpp" />
-    <ClCompile Include="src\XuanWu\Camera\PerspectiveCameraController.cpp" />
   </ItemGroup>
 </Project>
