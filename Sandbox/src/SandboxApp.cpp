@@ -1,4 +1,5 @@
 #include <XuanWu.h>
+#include <XuanWu/Core/EntryPoint.h>
 
 #include <glm/glm.hpp>
 #include "imgui/imgui.h"
@@ -6,13 +7,15 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Platform/OpenGL/OpenGLShader.h"
 
+#include "Sandbox2D.h"
+
 class ExampleLayer : public XuanWu::Layer
 {
 public:
 	ExampleLayer()
 		:Layer("Example"), m_CameraController(1280.0f / 720.0f, true), camera(75.0f, (float)XuanWu::Application::Get().GetWindow().GetWidth() / (float)XuanWu::Application::Get().GetWindow().GetHeight(), 0.1f, 1000.0f)
 	{
-		m_VertexArray.reset(XuanWu::VertexArray::Create());
+		m_VertexArray = XuanWu::VertexArray::Create();
 
 		float vertices[] = {
 			-0.5f, -0.5f, 0.0f, 1.0f, 0.f, 0.f, 1.0f,
@@ -36,7 +39,7 @@ public:
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
 		//ËÄ±ßÐÎ
-		m_SquareVAO.reset(XuanWu::VertexArray::Create());
+		m_SquareVAO = XuanWu::VertexArray::Create();
 		float SquareVertex[] = {
 			-0.75f, -0.75f, .0f, 0.0f, 0.0f,
 			 0.75f, -0.75f, .0f, 1.0f, 0.0f, 
@@ -124,7 +127,8 @@ class Sandbox : public XuanWu::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()
