@@ -31,6 +31,7 @@ namespace XuanWu {
 
 	Application::~Application()
 	{
+
 	}
 
 	void Application::OnEvent(Event& e)

@@ -158,6 +158,11 @@ namespace XuanWu {
 	{
 		glUniformMatrix3fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, GL_FALSE, &model[0][0]);
 	}
+
+	void OpenGLShader::setVec4(const std::string& name, const glm::vec4& value) const
+	{
+		glUniform4fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, glm::value_ptr(value));
+	}
 	
 	void OpenGLShader::setVec3(const std::string& name, float x, float y, float z) const
 	{

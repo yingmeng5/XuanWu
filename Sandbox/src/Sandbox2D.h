@@ -1,5 +1,5 @@
 #pragma once
-#include "XuanWu.h"
+#include <XuanWu.h>
 
 class Sandbox2D : public XuanWu::Layer
 {
@@ -20,5 +20,5 @@ private:
 
 	XuanWu::Ref<XuanWu::VertexArray> m_SquareVA;
 
-	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
+	glm::vec4 m_SquareColor = { 0.8f, 0.2f, 0.3f, 1.0f };
 };
