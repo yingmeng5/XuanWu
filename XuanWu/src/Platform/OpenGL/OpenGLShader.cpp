@@ -134,6 +134,20 @@ namespace XuanWu {
 		glUseProgram(0);
 	}
 
+	void OpenGLShader::SetVec3(const std::string& name, const glm::vec3& value)
+	{
+		setVec3(name, value);
+	}
+	void OpenGLShader::SetVec4(const std::string& name, const glm::vec4& value)
+	{
+		setVec4(name, value);
+	}
+
+	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
+	{
+		setMat4(name, value);
+	}
+
 	void OpenGLShader::setBool(const std::string& name, bool value) const
 	{
 		glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), (int)value);

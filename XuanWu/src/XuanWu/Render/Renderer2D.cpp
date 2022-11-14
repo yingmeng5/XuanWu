@@ -5,7 +5,7 @@
 #include "Shader.h"
 #include "RenderCommand.h"
 
-#include "Platform/OpenGL/OpenGLShader.h"
+#include "glm/gtc/matrix_transform.hpp"
 
 namespace XuanWu {
 
@@ -53,8 +53,7 @@ namespace XuanWu {
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
 		s_Data->FlatColorShader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->setMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->setMat4("u_Model", glm::mat4(1.0f));
+		s_Data->FlatColorShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 
 	void Renderer2D::EndScene()
@@ -70,7 +69,12 @@ namespace XuanWu {
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
 		s_Data->FlatColorShader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->setVec4("u_Color", color);
+		s_Data->FlatColorShader->SetVec4("u_Color", color);
+
+		glm::mat4 model = glm::mat4(1.0f);
+		model = glm::translate(model, position);
+		model = glm::scale(model, { size.x, size.y, 1.0f });
+		s_Data->FlatColorShader->SetMat4("u_Model", model);
 
 		s_Data->QuadVertexArray->Bind();
 		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);

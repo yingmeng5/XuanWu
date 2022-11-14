@@ -16,6 +16,10 @@ namespace XuanWu {
 		virtual void Unbind() const override;
 		virtual const std::string& GetName() const override { return m_Name; }
 
+		virtual void SetVec3(const std::string& name, const glm::vec3& value) override;
+		virtual void SetVec4(const std::string& name, const glm::vec4& value) override;
+		virtual void SetMat4(const std::string& name, const glm::mat4& value) override;
+
 		void setBool(const std::string& name, bool value) const;
 		void setInt(const std::string& name, int value) const;
 		void setFloat(const std::string& name, float value) const;
