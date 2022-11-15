@@ -14,11 +14,10 @@ public:
 	virtual void OnImGuiRender() override;
 	virtual void OnEvent(XuanWu::Event& event) override;
 private:
-	XuanWu::Ref<XuanWu::Shader> m_Shader;
+	//XuanWu::Ref<XuanWu::Shader> m_Shader;
 	XuanWu::Ref<XuanWu::Texture2D> m_Texture;
 	XuanWu::OrthographicCameraController m_CameraController;
-
-	XuanWu::Ref<XuanWu::VertexArray> m_SquareVA;
+	//XuanWu::Ref<XuanWu::VertexArray> m_SquareVA;
 
 	glm::vec4 m_SquareColor = { 0.8f, 0.2f, 0.3f, 1.0f };
 };
