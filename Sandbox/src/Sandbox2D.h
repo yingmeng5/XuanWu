@@ -19,5 +19,13 @@ private:
 	XuanWu::OrthographicCameraController m_CameraController;
 	//XuanWu::Ref<XuanWu::VertexArray> m_SquareVA;
 
+	struct ProfileResult
+	{
+		const char* Name;
+		float Time;
+	};
+
+	std::vector<ProfileResult> m_ProfileResults;
+
 	glm::vec4 m_SquareColor = { 0.8f, 0.2f, 0.3f, 1.0f };
 };

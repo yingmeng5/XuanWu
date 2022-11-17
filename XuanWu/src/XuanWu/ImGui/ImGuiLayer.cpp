@@ -92,10 +92,4 @@ namespace XuanWu {
 			glfwMakeContextCurrent(backup_current_context);
 		}
 	}
-
-	void ImGuiLayer::OnImGuiRender()
-	{
-		static bool status = true;
-		ImGui::ShowDemoWindow(&status);
-	}
 }
