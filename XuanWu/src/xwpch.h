@@ -14,6 +14,7 @@
 #include <fstream>
 
 #include "XuanWu/Core/Log.h"
+#include "XuanWu/Debug/Instrumentor.h"
 
 #ifdef XW_PLATFORM_WINDOWS
 	#include <Windows.h>

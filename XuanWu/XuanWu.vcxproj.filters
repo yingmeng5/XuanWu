@@ -1402,6 +1402,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\XuanWu\Render\Renderer2D.h" />
+    <ClInclude Include="src\XuanWu\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">

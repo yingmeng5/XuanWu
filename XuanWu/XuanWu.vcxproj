@@ -166,6 +166,7 @@
     <ClInclude Include="src\XuanWu\Core\Platform.h" />
     <ClInclude Include="src\XuanWu\Core\Timestep.h" />
     <ClInclude Include="src\XuanWu\Core\Window.h" />
+    <ClInclude Include="src\XuanWu\Debug\Instrumentor.h" />
     <ClInclude Include="src\XuanWu\Events\ApplicationEvent.h" />
     <ClInclude Include="src\XuanWu\Events\Event.h" />
     <ClInclude Include="src\XuanWu\Events\KeyEvent.h" />
