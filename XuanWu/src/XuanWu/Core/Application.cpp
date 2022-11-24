@@ -17,6 +17,8 @@ namespace XuanWu {
 
 	Application::Application()
 	{
+		XW_PROFILE_FUNCTION();
+
 		XW_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -31,11 +33,15 @@ namespace XuanWu {
 
 	Application::~Application()
 	{
+		XW_PROFILE_FUNCTION();
 
+		Renderer::Shutdown();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		XW_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(XW_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(XW_BIND_EVENT_FN(Application::OnWindowResize));
@@ -51,23 +57,35 @@ namespace XuanWu {
 	}
 
 	void Application::Run()
-	{	
+	{
+		XW_PROFILE_FUNCTION();
+
 		while (m_Running)
 		{
+			XW_PROFILE_SCOPE("RunLoop");
+
 			float currentTime = Platform::GetTime();
 			Timestep timestep = currentTime - m_LastFrameTime;
 			m_LastFrameTime = currentTime;
 
 			if (!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
-			}
+				{
+					XW_PROFILE_SCOPE("LayerStack OnUpdate");
 
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+
+				m_ImGuiLayer->Begin();
+				{
+					XW_PROFILE_SCOPE("LayerStack OnImGuiRender");
+
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+				}
+				m_ImGuiLayer->End();
+			}
 
 			m_Window->OnUpdate();
 		}
@@ -75,12 +93,16 @@ namespace XuanWu {
 
 	void Application::PushLayer(Layer* layer)
 	{
+		XW_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
+		XW_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(overlay);
 		overlay->OnAttach();
 	}
@@ -93,6 +115,8 @@ namespace XuanWu {
 
 	bool Application::OnWindowResize(WindowResizeEvent& event)
 	{
+		XW_PROFILE_FUNCTION();
+
 		if (event.GetWidth() == 0 || event.GetHeight() == 0)
 		{
 			m_Minimized = true;

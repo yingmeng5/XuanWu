@@ -28,26 +28,36 @@ namespace XuanWu {
 
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
+		XW_PROFILE_FUNCTION();
+
 		glCreateVertexArrays(1, &m_RenderID);
 	}
 
 	OpenGLVertexArray::~OpenGLVertexArray()
 	{
+		XW_PROFILE_FUNCTION();
+
 		glDeleteVertexArrays(1, &m_RenderID);
 	}
 
 	void OpenGLVertexArray::Bind() const
 	{
+		XW_PROFILE_FUNCTION();
+
 		glBindVertexArray(m_RenderID);
 	}
 
 	void OpenGLVertexArray::Unbind() const
 	{
+		XW_PROFILE_FUNCTION();
+
 		glBindVertexArray(0);
 	}
 
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
+		XW_PROFILE_FUNCTION();
+
 		XW_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex buffer has no Layout!")
 
 		glBindVertexArray(m_RenderID);
@@ -71,6 +81,8 @@ namespace XuanWu {
 
 	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
+		XW_PROFILE_FUNCTION();
+
 		glBindVertexArray(m_RenderID);
 		indexBuffer->Bind();
 

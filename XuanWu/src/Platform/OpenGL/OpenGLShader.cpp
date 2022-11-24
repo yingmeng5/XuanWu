@@ -9,6 +9,8 @@ namespace XuanWu {
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexPath, const std::string& fragmentPath)
 		:m_Name(name)
 	{
+		XW_PROFILE_FUNCTION();
+
 		std::string vertexSrc = ReadFile(vertexPath);
 		std::string fragmentSrc = ReadFile(fragmentPath);
 		Compile(vertexSrc, fragmentSrc);
@@ -16,11 +18,15 @@ namespace XuanWu {
 
 	OpenGLShader::~OpenGLShader()
 	{
+		XW_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 	}
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
+		XW_PROFILE_FUNCTION();
+
 		std::string result;
 		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 		if (in)
@@ -40,6 +46,8 @@ namespace XuanWu {
 
 	void OpenGLShader::Compile(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
+		XW_PROFILE_FUNCTION();
+
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
 		const GLchar* source = vertexSrc.c_str();
@@ -126,30 +134,42 @@ namespace XuanWu {
 
 	void OpenGLShader::Bind() const
 	{
+		XW_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Unbind() const
 	{
+		XW_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
+		XW_PROFILE_FUNCTION();
+
 		setInt(name, value);
 	}
 
 	void OpenGLShader::SetVec3(const std::string& name, const glm::vec3& value)
 	{
+		XW_PROFILE_FUNCTION();
+
 		setVec3(name, value);
 	}
 	void OpenGLShader::SetVec4(const std::string& name, const glm::vec4& value)
 	{
+		XW_PROFILE_FUNCTION();
+
 		setVec4(name, value);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
 	{
+		XW_PROFILE_FUNCTION();
+
 		setMat4(name, value);
 	}
 

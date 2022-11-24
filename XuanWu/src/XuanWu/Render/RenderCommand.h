@@ -9,6 +9,8 @@ namespace XuanWu {
 	public:
 		inline static void Init()
 		{
+			XW_PROFILE_FUNCTION();
+
 			s_RendererAPI->Init();
 		}
 

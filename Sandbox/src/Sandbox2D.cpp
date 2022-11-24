@@ -12,11 +12,14 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+	XW_PROFILE_FUNCTION();
+
 	m_Texture = XuanWu::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach()
 {
+	XW_PROFILE_FUNCTION();
 
 }
 
@@ -24,10 +27,7 @@ void Sandbox2D::OnUpdate(XuanWu::Timestep ts)
 {
 	XW_PROFILE_FUNCTION();
 
-	{
-		XW_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_CameraController.OnUpdate(ts);
-	}
+	m_CameraController.OnUpdate(ts);
 
 	{
 		XW_PROFILE_SCOPE("Renderer Prep");

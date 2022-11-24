@@ -23,7 +23,9 @@ namespace XuanWu {
 	}
 
 	void ImGuiLayer::OnAttach()
-	{	
+	{
+		XW_PROFILE_FUNCTION();
+
         // Setup Dear ImGui context
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
@@ -56,6 +58,8 @@ namespace XuanWu {
 
 	void ImGuiLayer::OnDetach()
 	{
+		XW_PROFILE_FUNCTION();
+
 		// Cleanup
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
@@ -64,6 +68,8 @@ namespace XuanWu {
 
 	void ImGuiLayer::Begin()
 	{
+		XW_PROFILE_FUNCTION();
+
 		// Start the Dear ImGui frame
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
@@ -72,6 +78,8 @@ namespace XuanWu {
 
 	void ImGuiLayer::End()
 	{
+		XW_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());

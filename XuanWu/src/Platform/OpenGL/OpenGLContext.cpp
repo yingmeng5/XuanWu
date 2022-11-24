@@ -14,6 +14,8 @@ namespace XuanWu {
 
 	void OpenGLContext::Init()
 	{
+		XW_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		XW_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -36,6 +38,8 @@ namespace XuanWu {
 
 	void OpenGLContext::SwapBuffers()
 	{
+		XW_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }
