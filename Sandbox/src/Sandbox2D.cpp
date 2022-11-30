@@ -40,7 +40,7 @@ void Sandbox2D::OnUpdate(XuanWu::Timestep ts)
 		XuanWu::Renderer2D::BeginScene(m_CameraController.GetCamera());
 		XuanWu::Renderer2D::DrawQuad({ -1.0f, 1.0f }, { 0.5f, 0.5f }, { 0.8f, 0.8f, 0.8f , 1.0f });
 		XuanWu::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, m_SquareColor);
-		XuanWu::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_Texture);
+		XuanWu::Renderer2D::DrawRotatedQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, 45.0f, m_Texture, 10.0f);
 		XuanWu::Renderer2D::EndScene();
 	}
 }
