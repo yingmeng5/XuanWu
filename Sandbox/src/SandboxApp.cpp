@@ -23,7 +23,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.f, 0.5f, 1.0f, 1.0f
 		};
 		XuanWu::Ref<XuanWu::VertexBuffer> m_VertexBuffer;
-		m_VertexBuffer.reset(XuanWu::VertexBuffer::Create(vertices, sizeof(vertices)));
+		m_VertexBuffer = XuanWu::VertexBuffer::Create(vertices, sizeof(vertices));
 
 		XuanWu::BufferLayout layout = {
 			{ XuanWu::ShaderDataType::Float3, "a_Position" },
@@ -35,7 +35,7 @@ public:
 
 		uint32_t indices[3] = { 0, 1, 2 };
 		XuanWu::Ref<XuanWu::IndexBuffer> m_IndexBuffer;
-		m_IndexBuffer.reset(XuanWu::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		m_IndexBuffer = XuanWu::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
 		//ËÄ±ßÐÎ
@@ -46,14 +46,14 @@ public:
 			 0.75f,  0.75f, .0f, 1.0f, 1.0f,
 			-0.75f,  0.75f, .0f, 0.0f, 1.0f 		
 		};
-		m_VertexBuffer.reset(XuanWu::VertexBuffer::Create(SquareVertex, sizeof(SquareVertex)));
+		m_VertexBuffer = XuanWu::VertexBuffer::Create(SquareVertex, sizeof(SquareVertex));
 		m_VertexBuffer->SetLayout({
 			{ XuanWu::ShaderDataType::Float3, "a_Position" },
 			{ XuanWu::ShaderDataType::Float2, "a_Texture"} });
 		m_SquareVAO->AddVertexBuffer(m_VertexBuffer);
 
 		uint32_t SquareIndices[] = { 0, 1, 2, 2, 0, 3 };
-		m_IndexBuffer.reset(XuanWu::IndexBuffer::Create(SquareIndices, sizeof(SquareIndices) / sizeof(uint32_t)));
+		m_IndexBuffer = XuanWu::IndexBuffer::Create(SquareIndices, sizeof(SquareIndices) / sizeof(uint32_t));
 		m_SquareVAO->SetIndexBuffer(m_IndexBuffer);
 
 
