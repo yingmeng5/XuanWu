@@ -13,7 +13,7 @@ namespace XuanWu {
 	OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size)
 	{
 		XW_PROFILE_FUNCTION();
-
+		
 		glCreateBuffers(1, &m_RenderID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RenderID);
 		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);

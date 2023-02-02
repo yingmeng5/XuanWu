@@ -153,6 +153,13 @@ namespace XuanWu {
 		setInt(name, value);
 	}
 
+	void OpenGLShader::SetIntArray(const std::string& name, int* value, uint32_t count)
+	{
+		XW_PROFILE_FUNCTION();
+
+		UploadUniformIntArray(name, value, count);
+	}
+
 	void OpenGLShader::SetFloat(const std::string& name, float value)
 	{
 		XW_PROFILE_FUNCTION();
@@ -188,6 +195,11 @@ namespace XuanWu {
 	void OpenGLShader::setInt(const std::string& name, int value) const
 	{
 		glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), value);
+	}
+
+	void OpenGLShader::UploadUniformIntArray(const std::string& name, int* value, uint32_t count)
+	{
+		glUniform1iv(glGetUniformLocation(m_RendererID, name.c_str()), count, value);
 	}
 
 	void OpenGLShader::setFloat(const std::string& name, float value) const

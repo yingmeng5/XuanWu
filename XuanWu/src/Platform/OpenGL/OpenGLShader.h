@@ -17,6 +17,7 @@ namespace XuanWu {
 		virtual const std::string& GetName() const override { return m_Name; }
 
 		virtual void SetInt(const std::string& name, int value) override;
+		virtual void SetIntArray(const std::string& name, int* value, uint32_t count) override;
 		virtual void SetFloat(const std::string& name, float value) override;
 		virtual void SetVec3(const std::string& name, const glm::vec3& value) override;
 		virtual void SetVec4(const std::string& name, const glm::vec4& value) override;
@@ -24,6 +25,7 @@ namespace XuanWu {
 
 		void setBool(const std::string& name, bool value) const;
 		void setInt(const std::string& name, int value) const;
+		void UploadUniformIntArray(const std::string& name, int* value, uint32_t count);
 		void setFloat(const std::string& name, float value) const;
 		void setMat4(const std::string& name, const glm::mat4& model) const;
 		void setVec4(const std::string& name, const glm::vec4& value) const;
